@@ -13,10 +13,13 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.button)
         rollButton.setOnClickListener { rollDice() }
+
+        //does a dice roll on create so that it looks better for the user and easier for them to understand
+        rollDice()
     }
 
     /**
-     * rolls dice and updates text in textView with the result
+     * roll dice and update the ImageView based on the result
      * **/
     private fun rollDice() {
         //Creates Dice object with numSides = 6 and rolls it
@@ -27,31 +30,28 @@ class MainActivity : AppCompatActivity() {
         val diceImage: ImageView = findViewById(R.id.imageView)
 
         /**
-         * Creates drawable resource variable and saves the resource ID value in it
+         * Create drawable resource variable and saves the resource ID value in it
          * **/
         val drawableResource = when (diceRoll) {
-            //If user rolls a 1, give drawableResource value of dice_1 img resource ID
             1 -> R.drawable.dice_1
-            //If user rolls a 2, give drawableResource value of dice_2 img resource ID
             2 -> R.drawable.dice_2
-            //If user rolls a 3, give drawableResource value of dice_3 img resource ID
             3 -> R.drawable.dice_3
-            //If user rolls a 4, give drawableResource value of dice_4 img resource ID
             4 -> R.drawable.dice_4
-            //If user rolls a 5, give drawableResource value of dice_5 img resource ID
             5 -> R.drawable.dice_5
-            //else give drawableResource value of dice_6 img resource ID
             else -> R.drawable.dice_6
         }
+
+        //Update ImageView with correct drawable resource ID
         diceImage.setImageResource(drawableResource)
-        //sets a content desc for ImageView for screen readers
+
+        //Update the content desc for ImageView for screen readers
         diceImage.contentDescription = diceRoll.toString()
 
     }
 }
 
 class Dice(private val numSides: Int) {
-    //Returns a random Int value between the IntRange of 1 and number of sides
+    //Return a random Int value between the IntRange of 1 and number of sides
     fun roll(): Int {
         return (1..numSides).random()
     }
