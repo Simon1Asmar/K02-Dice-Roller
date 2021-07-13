@@ -23,22 +23,24 @@ class MainActivity : AppCompatActivity() {
         val dice = Dice(6)
         val diceRoll = dice.roll()
 
-        //Changes the imageView passing it the ID of dice_2 image
+
         val diceImage: ImageView = findViewById(R.id.imageView)
-        diceImage.setImageResource(R.drawable.dice_2)
 
-        //If user rolls a 1, display dice_1 img
-
-        //If user rolls a 2, display dice_2 img
-
-        //If user rolls a 3, display dice_3 img
-
-        //If user rolls a 4, display dice_4 img
-
-        //If user rolls a 5, display dice_5 img
-
-        //If user rolls a 6, display dice_6 img
-
+        //Changes image based on diceRoll
+        when (diceRoll){
+            //If user rolls a 1, display dice_1 img
+            1 -> diceImage.setImageResource(R.drawable.dice_1)
+            //If user rolls a 2, display dice_2 img
+            2 -> diceImage.setImageResource(R.drawable.dice_2)
+            //If user rolls a 3, display dice_3 img
+            3 -> diceImage.setImageResource(R.drawable.dice_3)
+            //If user rolls a 4, display dice_4 img
+            4 -> diceImage.setImageResource(R.drawable.dice_4)
+            //If user rolls a 5, display dice_5 img
+            5 -> diceImage.setImageResource(R.drawable.dice_5)
+            //If user rolls a 6, display dice_6 img
+            6 -> diceImage.setImageResource(R.drawable.dice_6)
+        }
 
     }
 }
